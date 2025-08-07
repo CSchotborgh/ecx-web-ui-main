@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,23 +11,23 @@
 
 /* Enhanced Theme Variables */
 :root {
-  --bg-gradient: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+  --bg-gradient: linear-gradient(135deg, #1a1c25 0%, #1a1c25 50%, #0b0b0b 100%);
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
-  --card-bg: rgba(30, 41, 59, 0.8);
+  --card-bg: rgb(61, 66, 77, 0.8);
   --card-border: rgba(148, 163, 184, 0.3);
-  --nav-bg: rgba(15, 23, 42, 0.95);
+  --nav-bg: rgb(135, 170, 197, 0.95);
   --accent: #3b82f6;
-  --accent-hover: #2563eb;
-  --shadow-color: rgba(0, 0, 0, 0.5);
+  --accent-hover: #6693f5;
+  --shadow-color: rgb(136, 172, 200, 0.5);
 }
 
 .theme-light {
-  --bg-gradient: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%);
+  --bg-gradient: linear-gradient(135deg, #88b3d2 0%, #8692a2 50%, #cbd5e1 100%);
   --text-primary: #0f172a;
-  --text-secondary: #475569;
+  --text-secondary: #1a1c25;
   --card-bg: rgba(255, 255, 255, 0.9);
-  --card-border: rgba(148, 163, 184, 0.4);
+  --card-border: rgb(255, 255, 255, 0.4);
   --nav-bg: rgba(255, 255, 255, 0.95);
   --accent: #3b82f6;
   --accent-hover: #2563eb;
@@ -36,7 +35,7 @@
 }
 
 .theme-dark {
-  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #1a1c25 100%);
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
   --card-bg: rgba(15, 23, 42, 0.9);
@@ -48,18 +47,23 @@
 }
 
 .theme-super-dark {
-  --bg-gradient: linear-gradient(135deg, #020617 0%, #0f172a 30%, #1e293b 70%, #334155 100%);
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --card-bg: rgba(2, 6, 23, 0.95);
-  --card-border: rgba(148, 163, 184, 0.15);
-  --nav-bg: rgba(2, 6, 23, 0.98);
-  --accent: #6366f1;
-  --accent-hover: #4f46e5;
-  --shadow-color: rgba(0, 0, 0, 0.8);
+  --bg-gradient: linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #111111 50%, #1a1a1a 100%);
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --card-bg: rgba(10, 10, 10, 0.95);
+  --card-border: rgb(255, 255, 255, 0.2);
+  --nav-bg: rgba(0, 0, 0, 0.98);
+  --accent: #00ff88;
+  --accent-hover: #00cc6a;
+  --shadow-color: rgba(0, 0, 0, 0.9);
+  --section-bg: rgba(5, 5, 5, 0.9);
+  --section-border: rgba(0, 255, 136, 0.15);
+  --panel-bg: rgb(11, 11, 12, 0.95);
+  --panel-border: rgba(40, 40, 40, 0.6);
 }
 
-html, body {
+html,
+body {
   @apply font-sans min-h-screen;
   color: var(--text-primary);
   background: var(--bg-gradient);
@@ -76,16 +80,17 @@ html, body {
 
 /* Modern Clean Cards */
 .card {
-  @apply border rounded-xl p-6 shadow-lg transition-all duration-300;
+  @apply border rounded-lg p-6 shadow-lg transition-all duration-300;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   backdrop-filter: blur(10px);
-  box-shadow: 0 10px 25px var(--shadow-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 35px var(--shadow-color);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px var(--shadow-color);
+  border: 1px solid rgba(128, 128, 128, 0.4);
 }
 
 /* Clean Navigation */
@@ -94,7 +99,7 @@ html, body {
   background: var(--nav-bg);
   border-bottom: 1px solid var(--card-border);
   backdrop-filter: blur(15px);
-  box-shadow: 0 4px 20px var(--shadow-color);
+  box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 /* Navigation Links */
@@ -120,27 +125,29 @@ html, body {
 
 /* Clean Button Styles */
 .btn-primary {
-  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-200 shadow-md;
+  @apply px-6 py-3 rounded-md font-medium transition-all duration-200 shadow-sm;
   background: var(--accent);
-  color: white;
+  color: #000000;
   border: none;
+  font-weight: 500;
 }
 
 .btn-primary:hover {
   background: var(--accent-hover);
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 255, 136, 0.3);
 }
 
 .btn-secondary {
-  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-200 border;
+  @apply px-6 py-3 rounded-md font-medium transition-all duration-200 border;
   background: transparent;
   color: var(--text-primary);
   border: 1px solid var(--card-border);
+  font-weight: 500;
 }
 
 .btn-secondary:hover {
-  background: var(--card-bg);
+  background: rgba(64, 64, 64, 0.2);
   border: 1px solid var(--accent);
   color: var(--accent);
 }
@@ -160,21 +167,22 @@ html, body {
 
 /* Clean Form Elements */
 .form-input {
-  @apply border rounded-lg px-4 py-3 transition-all duration-200 text-base;
-  background: var(--card-bg);
+  @apply border rounded-md px-4 py-3 transition-all duration-200 text-base;
+  background: rgba(26, 26, 26, 0.8);
   border: 1px solid var(--card-border);
   color: var(--text-primary);
 }
 
 .form-input::placeholder {
   color: var(--text-secondary);
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 .form-input:focus {
   outline: none;
   border: 1px solid var(--accent);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 0 2px rgba(0, 255, 136, 0.1);
+  background: rgba(17, 17, 17, 0.9);
 }
 
 .form-label {
@@ -184,10 +192,10 @@ html, body {
 
 /* Grid Layout */
 .custom-grid {
-  @apply m-auto grid grid-cols-1 gap-6 border rounded-xl p-6 min-w-full min-h-full text-center items-center content-center justify-center;
+  @apply m-auto grid grid-cols-1 gap-6 border rounded-lg p-6 min-w-full min-h-full text-center items-center content-center justify-center;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  box-shadow: 0 10px 25px var(--shadow-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
   backdrop-filter: blur(10px);
 }
 
@@ -326,19 +334,47 @@ html, body {
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
+/* Section Styles */
+.section-container {
+  @apply py-16;
+  background: var(--section-bg);
+  border-bottom: 1px solid var(--section-border);
+}
+
+.section-content {
+  @apply container mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Panel Styles */
+.panel {
+  @apply rounded-lg p-8;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 8px 20px var(--shadow-color);
+  backdrop-filter: blur(12px);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .card {
     @apply p-4;
   }
-  
+
   .custom-grid {
     @apply p-4;
   }
-  
+
   .btn-primary,
   .btn-secondary,
   .btn-danger {
     @apply px-4 py-2 text-sm;
+  }
+
+  .section-container {
+    @apply py-12;
+  }
+
+  .panel {
+    @apply p-6;
   }
 }
