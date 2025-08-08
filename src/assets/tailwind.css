@@ -23,7 +23,7 @@
   /* Text Colors - All text elements with high contrast white */
   --text-primary: #ffffff;
   /* Main headings, important text - pure white for maximum contrast */
-  --text-secondary: #e5e7eb;
+  --text-secondary: #060511;
   /* Secondary text, descriptions - slightly off-white */
   --text-tertiary: #9ca3af;
   /* Muted text, placeholders - light gray */
@@ -48,19 +48,19 @@
 
   /* Border Colors - Subtle rounded borders like EdgeRack */
   --card-border: rgba(75, 85, 99, 0.4);
-  /* Main borders - subtle gray */
+  /* Main borders - subtle gray with 40% opacity for .card, .form-input, .data-table selectors */
   --card-border-hover: rgba(156, 163, 175, 0.6);
-  /* Hovered borders - more visible */
+  /* Hovered borders - more visible gray with 60% opacity for :hover states on interactive elements */
   --card-border-focus: rgba(96, 165, 250, 0.8);
-  /* Focused borders - blue accent */
+  /* Focused borders - blue accent with 80% opacity for :focus states on form inputs and buttons */
   --card-border-subtle: rgba(55, 65, 81, 0.3);
-  /* Subtle borders - very light */
+  /* Subtle borders - very light gray with 30% opacity for secondary elements and dividers */
 
   /* Navigation Elements - Match header styling */
   --nav-bg: rgba(10, 14, 26, 0.95);
   /* Navigation background - same as main bg */
   --nav-border: rgba(75, 85, 99, 0.3);
-  /* Navigation borders */
+  /* Navigation borders - subtle gray with 30% opacity for .nav-container border-bottom and .nav-dropdown borders */
   --nav-text: #ffffff;
   /* Navigation text - white */
   --nav-text-hover: #60a5fa;
@@ -96,15 +96,19 @@
   --button-primary-text: #ffffff;
   --button-secondary-bg: transparent;
   --button-secondary-border: rgba(75, 85, 99, 0.4);
+  /* Secondary button borders - subtle gray with 40% opacity for .btn-secondary default state */
   --button-secondary-hover: rgba(55, 65, 81, 0.5);
+  /* Secondary button hover background - darker gray with 50% opacity for .btn-secondary:hover */
   --button-danger-bg: #ef4444;
   --button-danger-hover: #dc2626;
 
   /* Form Elements - Dark input fields */
   --input-bg: rgba(31, 41, 55, 0.8);
   --input-border: rgba(75, 85, 99, 0.4);
+  /* Input default borders - subtle gray with 40% opacity for .form-input, .form-textarea, .form-select default state */
   --input-focus-bg: rgba(15, 20, 25, 0.9);
   --input-focus-border: #3b82f6;
+  /* Input focus borders - solid blue color for .form-input:focus, .form-textarea:focus, .form-select:focus states */
   --input-placeholder: rgba(156, 163, 175, 0.6);
 
   /* Shadow Colors - Deep shadows for depth */
@@ -343,9 +347,11 @@ body {
 
 /* Main Card Component - Primary containers for content */
 .card {
-  @apply border rounded-lg p-6 shadow-lg transition-all duration-300;
+  @apply border p-6 shadow-lg transition-all duration-300;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
+  /* Default border - uses --card-border variable (rgba(75, 85, 99, 0.4)) for subtle gray border with 40% opacity on .card selector */
+  border-radius: 0.8rem;
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 12px var(--shadow-color);
 }
@@ -355,29 +361,97 @@ body {
   transform: translateY(-1px);
   box-shadow: 0 6px 16px var(--shadow-color);
   border: 1px solid var(--card-border-hover);
+  /* Hover border - uses --card-border-hover variable (rgba(156, 163, 175, 0.6)) for more visible gray border with 60% opacity on .card:hover selector */
   background: var(--card-bg-hover);
+}
+
+/* Card Focus State - Keyboard navigation support */
+.card:focus {
+  outline: none;
+  /* Removes default browser outline for custom focus styling on .card:focus selector */
+  border: 1px solid var(--card-border-focus);
+  /* Focus border - uses --card-border-focus variable (rgba(96, 165, 250, 0.8)) for blue accent border with 80% opacity on .card:focus selector */
+  box-shadow: 0 0 0 2px var(--accent-background);
+  /* Focus outline ring - uses --accent-background variable for subtle blue glow around focused card elements */
 }
 
 /* Secondary Card Variant - Less prominent containers */
 .card-secondary {
-  @apply border rounded-lg p-4 shadow-sm transition-all duration-300;
+  @apply border p-4 shadow-sm transition-all duration-300;
   background: var(--card-bg-secondary);
   border: 1px solid var(--card-border-subtle);
+  /* Default border - uses --card-border-subtle variable (rgba(55, 65, 81, 0.3)) for very light gray border with 30% opacity on .card-secondary selector */
+  border-radius: 0.8rem;
   backdrop-filter: blur(8px);
+}
+
+/* Secondary Card Hover State */
+.card-secondary:hover {
+  border: 1px solid var(--card-border);
+  /* Hover border - uses --card-border variable for standard gray border with 40% opacity on .card-secondary:hover selector */
+  background: var(--card-bg-hover);
+}
+
+/* Secondary Card Focus State */
+.card-secondary:focus {
+  outline: none;
+  /* Removes default browser outline for custom focus styling on .card-secondary:focus selector */
+  border: 1px solid var(--card-border-focus);
+  /* Focus border - uses --card-border-focus variable for blue accent border with 80% opacity on .card-secondary:focus selector */
+  box-shadow: 0 0 0 2px var(--accent-background);
+  /* Focus outline ring - uses --accent-background variable for subtle blue glow around focused secondary cards */
 }
 
 /* Tertiary Card Variant - Minimal containers */
 .card-tertiary {
-  @apply border rounded-md p-3 transition-all duration-300;
+  @apply border p-3 transition-all duration-300;
   background: var(--card-bg-tertiary);
   border: 1px solid var(--card-border-subtle);
+  /* Default border - uses --card-border-subtle variable for very light gray border with 30% opacity on .card-tertiary selector */
+  border-radius: 0.8rem;
+}
+
+/* Tertiary Card Hover State */
+.card-tertiary:hover {
+  border: 1px solid var(--card-border);
+  /* Hover border - uses --card-border variable for standard gray border with 40% opacity on .card-tertiary:hover selector */
+  background: var(--card-bg-hover);
+}
+
+/* Tertiary Card Focus State */
+.card-tertiary:focus {
+  outline: none;
+  /* Removes default browser outline for custom focus styling on .card-tertiary:focus selector */
+  border: 1px solid var(--card-border-focus);
+  /* Focus border - uses --card-border-focus variable for blue accent border with 80% opacity on .card-tertiary:focus selector */
+  box-shadow: 0 0 0 2px var(--accent-background);
+  /* Focus outline ring - uses --accent-background variable for subtle blue glow around focused tertiary cards */
 }
 
 /* Compact Card Variant - Space-efficient containers */
 .card-compact {
-  @apply border rounded-md p-2 shadow-sm transition-all duration-300;
+  @apply border p-2 shadow-sm transition-all duration-300;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
+  /* Default border - uses --card-border variable for subtle gray border with 40% opacity on .card-compact selector */
+  border-radius: 0.8rem;
+}
+
+/* Compact Card Hover State */
+.card-compact:hover {
+  border: 1px solid var(--card-border-hover);
+  /* Hover border - uses --card-border-hover variable for more visible gray border with 60% opacity on .card-compact:hover selector */
+  background: var(--card-bg-hover);
+}
+
+/* Compact Card Focus State */
+.card-compact:focus {
+  outline: none;
+  /* Removes default browser outline for custom focus styling on .card-compact:focus selector */
+  border: 1px solid var(--card-border-focus);
+  /* Focus border - uses --card-border-focus variable for blue accent border with 80% opacity on .card-compact:focus selector */
+  box-shadow: 0 0 0 2px var(--accent-background);
+  /* Focus outline ring - uses --accent-background variable for subtle blue glow around focused compact cards */
 }
 
 /* ==========================================================================
@@ -405,15 +479,19 @@ body {
 
 /* Navigation Links */
 .nav-link {
-  @apply px-4 py-2 rounded-lg transition-all duration-200 font-medium;
+  @apply px-4 py-2 transition-all duration-200 font-medium;
   color: var(--text-secondary);
   border: 1px solid transparent;
+  /* Default transparent border - maintains layout consistency without visible border */
+  border-radius: 0;
 }
 
 .nav-link:hover {
   color: var(--nav-text-hover);
   background: var(--accent-background);
   border: 1px solid var(--accent-muted);
+  /* Hover border - uses --accent-muted variable for subtle blue accent border on navigation link hover */
+  border-radius: 0.4rem;
 }
 
 /* Active Navigation Link */
@@ -422,14 +500,17 @@ body {
   color: var(--nav-text);
   background: var(--nav-link-active);
   border: 1px solid var(--accent-muted);
+  /* Active border - uses --accent-muted variable for blue accent border on active/current navigation links */
+  border-radius: 0.4rem;
   font-weight: 600;
 }
 
 /* Navigation Dropdown Menu */
 .nav-dropdown {
-  @apply absolute top-full left-0 mt-2 rounded-lg shadow-lg border;
+  @apply absolute top-full left-0 mt-2 shadow-lg border;
   background: var(--nav-bg);
   border: 1px solid var(--nav-border);
+  border-radius: 0;
   backdrop-filter: blur(15px);
   min-width: 200px;
 }
@@ -456,10 +537,11 @@ body {
 
 /* Primary Action Buttons - Main call-to-action elements */
 .btn-primary {
-  @apply px-6 py-3 rounded-md font-medium transition-all duration-200 shadow-sm;
+  @apply px-4 py-2 font-medium transition-all duration-200 shadow-sm;
   background: var(--button-primary-bg);
   color: var(--button-primary-text);
   border: none;
+  border-radius: 0.4rem;
   font-weight: 500;
 }
 
@@ -481,25 +563,29 @@ body {
 
 /* Secondary Buttons - Alternative actions */
 .btn-secondary {
-  @apply px-6 py-3 rounded-md font-medium transition-all duration-200 border;
+  @apply px-4 py-2 font-medium transition-all duration-200 border;
   background: var(--button-secondary-bg);
   color: var(--text-primary);
   border: 1px solid var(--button-secondary-border);
+  /* Default border - uses --button-secondary-border variable for subtle gray border on secondary buttons */
+  border-radius: 0.4rem;
   font-weight: 500;
 }
 
 .btn-secondary:hover {
   background: var(--button-secondary-hover);
   border: 1px solid var(--accent);
+  /* Hover border - changes to solid --accent color for blue accent border on secondary button hover */
   color: var(--accent);
 }
 
 /* Tertiary Buttons - Minimal styling */
 .btn-tertiary {
-  @apply px-4 py-2 rounded-md font-medium transition-all duration-200;
+  @apply px-3 py-1.5 font-medium transition-all duration-200;
   background: transparent;
   color: var(--text-secondary);
   border: none;
+  border-radius: 0.4rem;
 }
 
 .btn-tertiary:hover {
@@ -509,10 +595,11 @@ body {
 
 /* Danger/Destructive Buttons - Warning actions */
 .btn-danger {
-  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-200;
+  @apply px-4 py-2 font-semibold transition-all duration-200;
   background: var(--button-danger-bg);
   color: white;
   border: none;
+  border-radius: 0.4rem;
 }
 
 .btn-danger:hover {
@@ -533,14 +620,17 @@ body {
 
 /* Icon-only Buttons */
 .btn-icon {
-  @apply p-2 rounded-md transition-all duration-200;
+  @apply p-2 transition-all duration-200;
   background: transparent;
   border: 1px solid transparent;
+  /* Default transparent border - maintains consistent sizing without visible border on icon buttons */
+  border-radius: 0.4rem;
 }
 
 .btn-icon:hover {
   background: var(--accent-background);
   border: 1px solid var(--accent-muted);
+  /* Hover border - uses --accent-muted variable for subtle blue accent border on icon button hover */
 }
 
 /* ==========================================================================
@@ -549,9 +639,10 @@ body {
 
 /* Text Input Fields */
 .form-input {
-  @apply border rounded-md px-4 py-3 transition-all duration-200 text-base w-full;
+  @apply border px-4 py-3 transition-all duration-200 text-base w-full;
   background: var(--input-bg);
   border: 1px solid var(--input-border);
+  border-radius: 0.8rem;
   color: var(--text-primary);
 }
 
@@ -564,21 +655,28 @@ body {
 /* Input Focus State */
 .form-input:focus {
   outline: none;
+  /* Removes default browser outline for custom focus styling */
   border: 1px solid var(--input-focus-border);
+  /* Focus border - uses --input-focus-border variable for blue accent border on focused form inputs */
   box-shadow: 0 0 0 2px var(--accent-background);
+  /* Focus outline ring - uses --accent-background variable for subtle blue glow around focused inputs */
   background: var(--input-focus-bg);
 }
 
 /* Input Error State */
 .form-input.error {
   border: 1px solid var(--status-error);
+  /* Error border - uses --status-error variable for red border on form inputs with validation errors */
   box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1);
+  /* Error outline ring - red glow with 10% opacity around error state inputs */
 }
 
 /* Input Success State */
 .form-input.success {
   border: 1px solid var(--status-success);
+  /* Success border - uses --status-success variable for green border on successfully validated inputs */
   box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1);
+  /* Success outline ring - green glow with 10% opacity around success state inputs */
 }
 
 /* Form Labels */
@@ -607,9 +705,10 @@ body {
 
 /* Textarea Elements */
 .form-textarea {
-  @apply border rounded-md px-4 py-3 transition-all duration-200 text-base w-full resize-y;
+  @apply border px-4 py-3 transition-all duration-200 text-base w-full resize-y;
   background: var(--input-bg);
   border: 1px solid var(--input-border);
+  border-radius: 0.8rem;
   color: var(--text-primary);
   min-height: 100px;
 }
@@ -623,9 +722,10 @@ body {
 
 /* Select Dropdown Elements */
 .form-select {
-  @apply border rounded-md px-4 py-3 transition-all duration-200 text-base w-full;
+  @apply border px-4 py-3 transition-all duration-200 text-base w-full;
   background: var(--input-bg);
   border: 1px solid var(--input-border);
+  border-radius: 0.8rem;
   color: var(--text-primary);
 }
 
@@ -668,11 +768,11 @@ body {
 
 /* Custom Grid Layout - Main grid container */
 .custom-grid {
-  @apply m-auto grid grid-cols-1 gap-6 border rounded-lg p-6 min-w-full min-h-full text-center items-center content-center justify-center;
+  @apply m-auto grid grid-cols-1 gap-6 border-none p-6 min-w-full min-h-full text-center items-center content-center justify-center;
   background: var(--grid-bg);
-  border: 1px solid var(--grid-border);
-  box-shadow: 0 4px 12px var(--shadow-color);
+  box-shadow: 0 4px 6px var(--shadow-color);
   backdrop-filter: blur(10px);
+  border-radius: 0.8rem;
 }
 
 /* Grid Item Hover Effects */
@@ -681,11 +781,19 @@ body {
   border-color: var(--card-border-hover);
 }
 
+/* System Grid Item - For system section grid elements */
+.system-grid-item {
+  @apply grid grid-cols-1 m-1 text-center border align-middle sm:grid-cols-2;
+  background: #060511 !important;
+  border-radius: 0.8rem;
+}
+
 /* Data Table Container */
 .data-table {
-  @apply w-full border-collapse rounded-lg overflow-hidden;
-  background: var(--card-bg);
+  @apply w-full border-collapse overflow-hidden;
+  background: var(--grid-bg);
   border: 1px solid var(--card-border);
+  border-radius: 0.8rem;
   box-shadow: 0 4px 12px var(--shadow-color);
 }
 
@@ -724,32 +832,434 @@ body {
    THEME-SPECIFIC OVERRIDES
    ========================================================================== */
 
-/* Super Dark Theme Specific Rules */
+/* Super Dark Theme Specific Rules - Use solid #060511 instead of gradients */
 .theme-super-dark .custom-grid {
-  background: var(--panel-bg);
-  border: 1px solid var(--panel-border);
+  background: #060511 !important;
+  border: 1px solid var(--panel-border) !important;
 }
 
 .theme-super-dark .grid-rows-1 {
-  background: var(--panel-bg);
+  background: #060511 !important;
 }
 
-/* Override Tailwind dark mode classes in super dark theme */
-.theme-super-dark .custom-grid.dark\:bg-gray-600 {
-  background: var(--panel-bg) !important;
-  border: 2px solid rgba(245, 245, 245, 0.9) !important;
+/* Super Dark Theme Grid and Table Elements */
+.theme-super-dark .data-table {
+  background: #060511 !important;
+}
+
+.theme-super-dark .data-table thead {
+  background: #060511 !important;
+}
+
+/* Super Dark Theme Card Elements */
+.theme-super-dark .card {
+  background: #060511 !important;
+}
+
+.theme-super-dark .card:hover {
+  background: #060511 !important;
+}
+
+.theme-super-dark .card-secondary {
+  background: #060511 !important;
+}
+
+.theme-super-dark .card-tertiary {
+  background: #060511 !important;
+}
+
+.theme-super-dark .card-compact {
+  background: #060511 !important;
+}
+
+/* Super Dark Theme Navigation Elements */
+.theme-super-dark .nav-container {
+  background: #060511 !important;
+}
+
+.theme-super-dark .nav-dropdown {
+  background: #060511 !important;
+}
+
+/* Super Dark Theme Button Elements */
+.theme-super-dark .btn-secondary {
+  background: #060511 !important;
+}
+
+.theme-super-dark .btn-tertiary:hover {
+  background: #060511 !important;
+}
+
+.theme-super-dark .btn-icon:hover {
+  background: #060511 !important;
+}
+
+/* Super Dark Theme Form Elements */
+.theme-super-dark .form-input {
+  background: #060511 !important;
+}
+
+.theme-super-dark .form-textarea {
+  background: #060511 !important;
+}
+
+.theme-super-dark .form-select {
+  background: #060511 !important;
+}
+
+.theme-super-dark .form-checkbox {
+  background: #060511 !important;
+}
+
+.theme-super-dark .form-radio {
+  background: #060511 !important;
+}
+
+/* Super Dark Theme Panel Elements */
+.theme-super-dark .panel {
+  background: #060511 !important;
+}
+
+.theme-super-dark .panel-compact {
+  background: #060511 !important;
+}
+
+.theme-super-dark .panel-header {
+  background: #060511 !important;
+}
+
+.theme-super-dark .panel-footer {
+  background: #060511 !important;
 }
 
 /* Super Dark Theme Status Indicators */
-.theme-super-dark .status-indicator {
-  border: 2px solid var(--accent);
-  background: var(--panel-bg);
+.theme-super-dark .status-badge {
+  background: #060511 !important;
+  border: 1px solid var(--panel-border) !important;
+}
+
+.theme-super-dark .badge-success {
+  background: #060511 !important;
+  border: 1px solid var(--status-success) !important;
+}
+
+.theme-super-dark .badge-error {
+  background: #060511 !important;
+  border: 1px solid var(--status-error) !important;
+}
+
+.theme-super-dark .badge-warning {
+  background: #060511 !important;
+  border: 1px solid var(--status-warning) !important;
+}
+
+.theme-super-dark .badge-info {
+  background: #060511 !important;
+  border: 1px solid var(--status-info) !important;
+}
+
+/* Super Dark Theme Interactive Elements */
+.theme-super-dark .dropdown-menu {
+  background: #060511 !important;
+}
+
+.theme-super-dark .dropdown-item:hover {
+  background: #060511 !important;
+}
+
+.theme-super-dark .nav-dropdown-item:hover {
+  background: #060511 !important;
+}
+
+.theme-super-dark .tooltip {
+  background: #060511 !important;
+}
+
+.theme-super-dark .progress-bar {
+  background: #060511 !important;
+}
+
+/* Super Dark Theme Collapse/Expand Elements */
+.theme-super-dark .collapse-toggle,
+.theme-super-dark [data-collapse-toggle],
+.theme-super-dark .collapse-button,
+.theme-super-dark .expand-button,
+.theme-super-dark button[aria-expanded],
+.theme-super-dark .flowbite-button,
+.theme-super-dark .fwb-button {
+  background: #060511 !important;
+  border: 1px solid #060511 !important;
+  border-color: #060511 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.theme-super-dark .expand-all,
+.theme-super-dark .collapse-all,
+.theme-super-dark .collapse-controls button,
+.theme-super-dark .toggle-button {
+  background: #060511 !important;
+  border: 1px solid #060511 !important;
+  border-color: #060511 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.theme-super-dark .expand-all:hover,
+.theme-super-dark .collapse-all:hover,
+.theme-super-dark .collapse-controls button:hover,
+.theme-super-dark .toggle-button:hover,
+.theme-super-dark [data-collapse-toggle]:hover,
+.theme-super-dark .collapse-button:hover,
+.theme-super-dark .expand-button:hover,
+.theme-super-dark button[aria-expanded]:hover,
+.theme-super-dark .flowbite-button:hover,
+.theme-super-dark .fwb-button:hover {
+  background: #060511 !important;
+  border: 1px solid #060511 !important;
+  border-color: #060511 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.theme-super-dark .expand-all:focus,
+.theme-super-dark .collapse-all:focus,
+.theme-super-dark .collapse-controls button:focus,
+.theme-super-dark .toggle-button:focus,
+.theme-super-dark [data-collapse-toggle]:focus,
+.theme-super-dark .collapse-button:focus,
+.theme-super-dark .expand-button:focus,
+.theme-super-dark button[aria-expanded]:focus,
+.theme-super-dark .flowbite-button:focus,
+.theme-super-dark .fwb-button:focus {
+  background: #060511 !important;
+  border: 1px solid #060511 !important;
+  border-color: #060511 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Super Dark Theme - Target any button within flowbite components */
+.theme-super-dark [data-flowbite] button,
+.theme-super-dark .flowbite-component button {
+  background: #060511 !important;
+  border: 1px solid #060511 !important;
+  border-color: #060511 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Super Dark Theme Modal Elements */
+.theme-super-dark .modal-content {
+  background: #060511 !important;
+}
+
+.theme-super-dark .modal-header {
+  background: #060511 !important;
+}
+
+.theme-super-dark .modal-footer {
+  background: #060511 !important;
+}
+
+/* Super Dark Theme Alert Elements */
+.theme-super-dark .alert-success {
+  background: #060511 !important;
+  border: 1px solid var(--status-success) !important;
+}
+
+.theme-super-dark .alert-error {
+  background: #060511 !important;
+  border: 1px solid var(--status-error) !important;
+}
+
+.theme-super-dark .alert-warning {
+  background: #060511 !important;
+  border: 1px solid var(--status-warning) !important;
+}
+
+.theme-super-dark .alert-info {
+  background: #060511 !important;
+  border: 1px solid var(--status-info) !important;
+}
+
+/* Super Dark Theme Glass Effects */
+.theme-super-dark .glass-effect {
+  background: #060511 !important;
+}
+
+.theme-super-dark .glass-effect-strong {
+  background: #060511 !important;
+}
+
+/* Super Dark Theme Tailwind Classes Override */
+.theme-super-dark .bg-slate-800 {
+  background: #060511 !important;
+}
+
+/* Dark Theme Tailwind Classes Override */
+.theme-dark .bg-slate-800 {
+  background: var(--card-bg) !important;
+}
+
+/* Dark Theme Collapse/Expand Elements */
+.theme-dark .collapse-toggle,
+.theme-dark [data-collapse-toggle],
+.theme-dark .collapse-button,
+.theme-dark .expand-button,
+.theme-dark button[aria-expanded],
+.theme-dark .flowbite-button,
+.theme-dark .fwb-button {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  border-color: var(--card-border) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.theme-dark .expand-all,
+.theme-dark .collapse-all,
+.theme-dark .collapse-controls button,
+.theme-dark .toggle-button {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  border-color: var(--card-border) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.theme-dark .expand-all:hover,
+.theme-dark .collapse-all:hover,
+.theme-dark .collapse-controls button:hover,
+.theme-dark .toggle-button:hover,
+.theme-dark [data-collapse-toggle]:hover,
+.theme-dark .collapse-button:hover,
+.theme-dark .expand-button:hover,
+.theme-dark button[aria-expanded]:hover,
+.theme-dark .flowbite-button:hover,
+.theme-dark .fwb-button:hover {
+  background: var(--card-bg-hover) !important;
+  border: 1px solid var(--card-border-hover) !important;
+  border-color: var(--card-border-hover) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.theme-dark .expand-all:focus,
+.theme-dark .collapse-all:focus,
+.theme-dark .collapse-controls button:focus,
+.theme-dark .toggle-button:focus,
+.theme-dark [data-collapse-toggle]:focus,
+.theme-dark .collapse-button:focus,
+.theme-dark .expand-button:focus,
+.theme-dark button[aria-expanded]:focus,
+.theme-dark .flowbite-button:focus,
+.theme-dark .fwb-button:focus {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  border-color: var(--card-border) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.theme-dark [data-flowbite] button,
+.theme-dark .flowbite-component button {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  border-color: var(--card-border) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Light Theme Tailwind Classes Override */
+.theme-light .bg-slate-800 {
+  background: var(--card-bg) !important;
+}
+
+/* Light Theme Collapse/Expand Elements */
+.theme-light .collapse-toggle,
+.theme-light [data-collapse-toggle],
+.theme-light .collapse-button,
+.theme-light .expand-button,
+.theme-light button[aria-expanded],
+.theme-light .flowbite-button,
+.theme-light .fwb-button {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  border-color: var(--card-border) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.theme-light .expand-all,
+.theme-light .collapse-all,
+.theme-light .collapse-controls button,
+.theme-light .toggle-button {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  border-color: var(--card-border) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.theme-light .expand-all:hover,
+.theme-light .collapse-all:hover,
+.theme-light .collapse-controls button:hover,
+.theme-light .toggle-button:hover,
+.theme-light [data-collapse-toggle]:hover,
+.theme-light .collapse-button:hover,
+.theme-light .expand-button:hover,
+.theme-light button[aria-expanded]:hover,
+.theme-light .flowbite-button:hover,
+.theme-light .fwb-button:hover {
+  background: var(--card-bg-hover) !important;
+  border: 1px solid var(--card-border-hover) !important;
+  border-color: var(--card-border-hover) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.theme-light .expand-all:focus,
+.theme-light .collapse-all:focus,
+.theme-light .collapse-controls button:focus,
+.theme-light .toggle-button:focus,
+.theme-light [data-collapse-toggle]:focus,
+.theme-light .collapse-button:focus,
+.theme-light .expand-button:focus,
+.theme-light button[aria-expanded]:focus,
+.theme-light .flowbite-button:focus,
+.theme-light .fwb-button:focus {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  border-color: 100px var(--card-border) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.theme-light [data-flowbite] button,
+.theme-light .flowbite-component button {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  border-color: var(--card-border) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Super Dark Theme Section Elements */
+.theme-super-dark .section-container {
+  background: #060511 !important;
 }
 
 /* Dark Theme Specific Rules */
 .theme-dark .nav-container {
   background: var(--nav-bg);
   box-shadow: 0 2px 12px var(--shadow-color);
+}
+
+/* Dark theme overrides for custom-grid */
+.dark .custom-grid {
+  border-radius: 0.8rem;
+  background: rgb(75 85 99);
 }
 
 /* Light Theme Specific Rules */
@@ -905,10 +1415,11 @@ body {
 
 /* Theme Toggle Button - Theme switching control */
 .theme-toggle-btn {
-  @apply flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200;
+  @apply flex items-center space-x-2 px-3 py-2 transition-all duration-200;
   background: transparent;
   color: var(--text-secondary);
   border: 1px solid transparent;
+  border-radius: 0.4rem;
 }
 
 .theme-toggle-btn:hover {
@@ -919,9 +1430,10 @@ body {
 
 /* Dropdown Menu */
 .dropdown-menu {
-  @apply absolute top-full right-0 mt-2 rounded-lg shadow-lg border min-w-max;
+  @apply absolute top-full right-0 mt-2 shadow-lg border min-w-max;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
+  border-radius: 0;
   backdrop-filter: blur(10px);
   z-index: 50;
 }
@@ -944,10 +1456,11 @@ body {
 
 /* Tooltip Elements */
 .tooltip {
-  @apply absolute z-10 px-2 py-1 text-xs rounded shadow-lg;
-  background: var(--card-bg-secondary);
+  @apply absolute z-10 px-2 py-1 text-xs shadow-lg;
+  background: var(--card-bg);
   color: var(--text-primary);
   border: 1px solid var(--card-border);
+  border-radius: 0.8rem;
   backdrop-filter: blur(5px);
 }
 
@@ -960,14 +1473,16 @@ body {
 
 /* Progress Bar */
 .progress-bar {
-  @apply w-full rounded-full overflow-hidden;
-  background: var(--card-bg-secondary);
+  @apply w-full overflow-hidden;
+  background: var(--card-bg);
   border: 1px solid var(--card-border-subtle);
+  border-radius: 0.8rem;
 }
 
 .progress-fill {
-  @apply h-2 rounded-full transition-all duration-300;
+  @apply h-2 transition-all duration-300;
   background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+  border-radius: 0.8rem;
 }
 
 /* ==========================================================================
@@ -983,9 +1498,10 @@ body {
 
 /* Modal Content Container */
 .modal-content {
-  @apply rounded-xl shadow-xl max-w-lg w-full mx-4;
+  @apply shadow-xl max-w-lg w-full mx-4;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
+  border-radius: 0.8rem;
   backdrop-filter: blur(15px);
   box-shadow: 0 25px 50px var(--shadow-color);
 }
@@ -1009,7 +1525,8 @@ body {
 
 /* Alert/Notification Containers */
 .alert {
-  @apply px-4 py-3 rounded-lg border flex items-center space-x-3;
+  @apply px-4 py-3 border flex items-center space-x-3;
+  border-radius: 0.8rem;
   backdrop-filter: blur(5px);
 }
 
@@ -1080,18 +1597,20 @@ body {
 
 /* Glass Effect - Frosted glass appearance */
 .glass-effect {
-  @apply border rounded-xl;
+  @apply border;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
+  border-radius: 0.8rem;
   backdrop-filter: blur(10px);
   box-shadow: 0 10px 25px var(--shadow-color);
 }
 
 /* Enhanced Glass Effect */
 .glass-effect-strong {
-  @apply border rounded-xl;
+  @apply border;
   background: var(--card-bg-secondary);
   border: 1px solid var(--card-border-hover);
+  border-radius: 0.8rem;
   backdrop-filter: blur(15px);
   box-shadow: 0 15px 35px var(--shadow-color);
 }
@@ -1128,7 +1647,9 @@ body {
 
 .focus-ring:focus {
   outline: none;
+  /* Removes default browser outline for custom focus ring styling */
   box-shadow: 0 0 0 2px var(--accent-background), 0 0 0 4px var(--accent-muted);
+  /* Double focus ring - inner ring uses --accent-background (subtle blue), outer ring uses --accent-muted (visible blue) */
 }
 
 /* Animated Border - Moving border effect */
@@ -1172,33 +1693,37 @@ body {
 
 /* Panel Component - Content panels */
 .panel {
-  @apply rounded-lg p-8;
+  @apply p-8;
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
+  border-radius: 0.8rem;
   box-shadow: 0 8px 20px var(--shadow-color);
   backdrop-filter: blur(12px);
 }
 
 /* Compact Panel Variant */
 .panel-compact {
-  @apply rounded-lg p-4;
+  @apply p-4;
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
+  border-radius: 0.8rem;
   box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 /* Header Panel - Top-level headers */
 .panel-header {
-  @apply rounded-t-lg p-6 border-b;
-  background: var(--card-bg-secondary);
+  @apply p-6 border-b;
+  background: #060511 !important;
   border-bottom: 1px solid var(--card-border);
+  border-radius: 0.8rem 0.8rem 0 0;
 }
 
 /* Footer Panel - Bottom-level footers */
 .panel-footer {
-  @apply rounded-b-lg p-6 border-t;
-  background: var(--card-bg-secondary);
+  @apply p-6 border-t;
+  background: #060511 !important;
   border-top: 1px solid var(--card-border);
+  border-radius: 0 0 0.8rem 0.8rem;
 }
 
 /* ==========================================================================
@@ -1386,7 +1911,7 @@ body {
 
   .btn-primary,
   .btn-secondary {
-    border: 1px solid #000;
+    border: 1px solid #000000;
     background: white;
     color: black;
   }
