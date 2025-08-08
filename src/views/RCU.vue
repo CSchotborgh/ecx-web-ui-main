@@ -47,7 +47,7 @@
         <!-- Header and Expansion/Collapse Control -->
         <div class="flex flex-row">
             <div class="flex flex-1 justify-start">
-                <h1 class="mt-6">Cooling Unit Readings:</h1>
+                <h1 class="mt-6">System Overview</h1>
             </div>
             <div class="flex justify-end mt-6">
                 <button @click="toggleExpansion">
@@ -62,7 +62,14 @@
         <div class="flex justify-center uppercase text-xs italic m-2 mt-2">
             <div v-if="modbus_connected" class="text-green-500">MODBUS: Connected</div>
             <div v-else class="text-red-500">MODBUS Error: {{ modbus_error }}</div>
-        </div>   
+        </div>
+
+        <!-- Two Column Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+            
+            <!-- Left Column: Cooling Unit -->
+            <div class="space-y-6">
+                <h2 class="text-xl font-semibold mb-4">Cooling Unit Readings</h2>   
 
         <!-- States Grid -->
         <div class="max-h-fit my-6 grid grid-rows-1 border rounded-3xl bg-slate-800">
@@ -354,27 +361,27 @@
                         </div>
 
                         <div class="max-h-100 overflow-y-auto m-6 flex justify-center text-center hidden sm:block">
-                            <fwb-table class="z-0 divide-y divide-gray-200 bg-gray-200">
-                                <fwb-table-head class="bg-gray-50 sticky top-0 z-10">
-                                    <fwb-table-head-cell class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <fwb-table class="data-table z-0">
+                                <fwb-table-head class="sticky top-0 z-10">
+                                    <fwb-table-head-cell class="!px-1 !py-2 text-center text-xs font-medium uppercase tracking-wider">
                                         Start Timestamp
                                     </fwb-table-head-cell>
-                                    <fwb-table-head-cell class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <fwb-table-head-cell class="!px-1 !py-2 text-center text-xs font-medium uppercase tracking-wider">
                                         Description
                                     </fwb-table-head-cell>
-                                    <fwb-table-head-cell class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <fwb-table-head-cell class="!px-1 !py-2 text-center text-xs font-medium uppercase tracking-wider">
                                         Duration
                                     </fwb-table-head-cell>
                                 </fwb-table-head>
                                 <fwb-table-body>
                                     <fwb-table-row v-for="log in logs" :key="log.timestamp">
-                                        <fwb-table-cell class="!px-6 !py-4 !whitespace-nowrap text-center text-xs md:text-sm lg:text-lg text-gray-500">
+                                        <fwb-table-cell class="!px-1 !py-2 whitespace-nowrap text-center text-xs md:text-sm lg:text-lg">
                                             {{ log.start_timestamp }}
                                         </fwb-table-cell>
-                                        <fwb-table-cell class="!px-6 !py-4 whitespace-nowrap text-center text-xs md:text-sm lg:text-lg text-gray-500">
+                                        <fwb-table-cell class="!px-1 !py-2 whitespace-nowrap text-center text-xs md:text-sm lg:text-lg">
                                             {{ log.description }}
                                         </fwb-table-cell>
-                                        <fwb-table-cell class="!px-6 !py-4 whitespace-nowrap text-center text-xs md:text-sm lg:text-lg text-gray-500">
+                                        <fwb-table-cell class="!px-1 !py-2 whitespace-nowrap text-center text-xs md:text-sm lg:text-lg">
                                             {{ convertSecondsToTime(log.difference) }}
                                         </fwb-table-cell>
                                     </fwb-table-row>
@@ -384,6 +391,105 @@
                     </div>
                 </Transition>
             </div>
+        </div>
+            </div>
+
+            <!-- Right Column: Cabinet -->
+            <div class="space-y-6">
+                <h2 class="text-xl font-semibold mb-4">Cabinet Information</h2>
+                
+                <!-- Cabinet Status Grid -->
+                <div class="max-h-fit grid grid-rows-1 border rounded-3xl bg-slate-800">
+                    <div class="my-6 mx-2">
+                        <div class="container flex flex-row">
+                            <div class="flex items-start">Cabinet Status:</div>
+                            <div class="flex gap-3 flex-1 justify-end">
+                                <button @click="showCabinetStatus = !showCabinetStatus">
+                                    <div v-if="showCabinetStatus">[ - ]</div>
+                                    <div v-else>[ + ]</div>
+                                </button>
+                            </div>
+                        </div>
+                        <Transition>    
+                            <div v-show="showCabinetStatus" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 m-2 mx-auto p-2 gap-8 w-full text-white">
+                                <div class="custom-grid border-none dark:rounded-full dark:bg-gray-600">
+                                    <div class="m-auto grid grid-rows-1 gap-4 text-center text-sm table-label">Power Status:</div>
+                                    <div class="flex justify-center">
+                                        <fwb-badge type="green" size="md">ONLINE</fwb-badge>
+                                    </div>                        
+                                </div>
+                                <div class="custom-grid border-none dark:rounded-full dark:bg-gray-600">
+                                    <div class="m-auto grid grid-rows-1 gap-4 text-center text-sm table-label">Door Status:</div>
+                                    <div class="flex justify-center">
+                                        <fwb-badge type="default" size="md">CLOSED</fwb-badge>
+                                    </div>
+                                </div>
+                                <div class="custom-grid border-none dark:rounded-full dark:bg-gray-600">
+                                    <div class="m-auto grid grid-rows-1 gap-4 text-center text-sm table-label">Lock Status:</div>
+                                    <div class="flex justify-center">
+                                        <fwb-badge type="green" size="md">SECURE</fwb-badge>
+                                    </div>
+                                </div>
+                            </div>
+                        </Transition>
+                    </div>
+                </div>
+
+                <!-- Cabinet Environmental Grid -->
+                <div class="max-h-fit grid grid-rows-1 border rounded-3xl bg-slate-800">
+                    <div class="my-6 mx-2">
+                        <div class="container flex flex-row">
+                            <div class="flex items-start">Environmental:</div>
+                            <div class="flex gap-3 flex-1 justify-end">
+                                <button @click="showCabinetEnvironmental = !showCabinetEnvironmental">
+                                    <div v-if="showCabinetEnvironmental">[ - ]</div>
+                                    <div v-else>[ + ]</div>
+                                </button>
+                            </div>
+                        </div>
+                        <Transition>    
+                            <div v-show="showCabinetEnvironmental" class="grid grid-cols-1 sm:grid-cols-2 m-2 mx-auto p-2 gap-8 w-full text-white">
+                                <div class="custom-grid">
+                                    <div class="m-auto grid grid-rows-1 gap-4 text-center text-sm table-label">Ambient Temp ({{ degreeSymbol }}):</div>
+                                    <div class="text-4xl">{{ usingFahrenheit ? '72.0' : '22.2' }}</div>
+                                </div>
+                                <div class="custom-grid">
+                                    <div class="m-auto grid grid-rows-1 gap-4 text-center text-sm table-label">Humidity:</div>
+                                    <div class="text-4xl">45%</div>
+                                </div>
+                            </div>
+                        </Transition>
+                    </div>
+                </div>
+
+                <!-- Cabinet Power Grid -->
+                <div class="max-h-fit grid grid-rows-1 border rounded-3xl bg-slate-800">
+                    <div class="my-6 mx-2">
+                        <div class="container flex flex-row">
+                            <div class="flex items-start">Power Metrics:</div>
+                            <div class="flex gap-3 flex-1 justify-end">
+                                <button @click="showCabinetPower = !showCabinetPower">
+                                    <div v-if="showCabinetPower">[ - ]</div>
+                                    <div v-else>[ + ]</div>
+                                </button>
+                            </div>
+                        </div>
+                        <Transition>    
+                            <div v-show="showCabinetPower" class="grid grid-cols-1 sm:grid-cols-2 m-2 mx-auto p-2 gap-8 w-full text-white">
+                                <div class="custom-grid">
+                                    <div class="m-auto grid grid-rows-1 gap-4 text-center text-sm table-label">Input Voltage (VAC):</div>
+                                    <div class="text-4xl">240</div>
+                                </div>
+                                <div class="custom-grid">
+                                    <div class="m-auto grid grid-rows-1 gap-4 text-center text-sm table-label">Power Draw (W):</div>
+                                    <div class="text-4xl">1850</div>
+                                </div>
+                            </div>
+                        </Transition>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 </template>
@@ -403,6 +509,9 @@ let showInternalGridControl = ref(true);
 let showInternalGridMotors = ref(true);
 let showInternalGridOther = ref(true);
 let showInternalAlarmGrid = ref(true);
+let showCabinetStatus = ref(true);
+let showCabinetEnvironmental = ref(true);
+let showCabinetPower = ref(true);
 let triggerExpandAll = ref(true);
 
 let hasActiveAlarms = ref(false);
@@ -522,6 +631,9 @@ const toggleExpansion = () => {
         showInternalGridTemps.value = false;
         showInternalAlarmGrid.value = false;
         showInternalGridControl.value = false;
+        showCabinetStatus.value = false;
+        showCabinetEnvironmental.value = false;
+        showCabinetPower.value = false;
     } else {
         showInternalGridMotors.value = true;
         showInternalGridStates.value = true;
@@ -529,6 +641,9 @@ const toggleExpansion = () => {
         showInternalGridTemps.value = true;
         showInternalAlarmGrid.value = true;
         showInternalGridControl.value = true;
+        showCabinetStatus.value = true;
+        showCabinetEnvironmental.value = true;
+        showCabinetPower.value = true;
     }
 
     triggerExpandAll = !triggerExpandAll;
