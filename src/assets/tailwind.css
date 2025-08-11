@@ -785,551 +785,274 @@ body {
 }
 
 /* ==========================================================================
-   THEME-SPECIFIC OVERRIDES
+   CONSOLIDATED THEME OVERRIDES
    ========================================================================== */
 
-/* Super Dark Theme Specific Class Rules - Use solid #060511 with simple borders on Home View */
+/* Universal Theme Component Variables */
+.theme-super-dark {
+  --theme-bg: #060511;
+  --theme-text: #ffffff;
+  --theme-border: rgb(255, 255, 255, 1.4);
+  --theme-border-hover: rgb(6, 5, 17, 0.6);
+  --theme-border-focus: rgba(96, 165, 250, 0.8);
+}
+
+.theme-dark {
+  --theme-bg: var(--card-bg);
+  --theme-text: var(--text-primary);
+  --theme-border: var(--card-border);
+  --theme-border-hover: var(--card-border-hover);
+  --theme-border-focus: var(--card-border-focus);
+}
+
+.theme-light {
+  --theme-bg: var(--card-bg);
+  --theme-text: var(--text-primary);
+  --theme-border: var(--card-border);
+  --theme-border-hover: var(--card-border-hover);
+  --theme-border-focus: var(--card-border-focus);
+}
+
+/* ==========================================================================
+   CONSOLIDATED COMPONENT OVERRIDES - ALL THEMES
+   ========================================================================== */
+
+/* Core UI Components Super Dark Mode */
+.theme-super-dark .custom-grid,
+.theme-super-dark .grid-rows-1,
+.theme-super-dark .data-table,
+.theme-super-dark .card,
+.theme-super-dark .panel,
+.theme-super-dark .nav-container,
+.theme-super-dark .form-input,
+.theme-super-dark .form-textarea,
+.theme-super-dark .form-select,
+.theme-super-dark .modal-content,
+.theme-super-dark .dropdown-menu,
+.theme-super-dark .tooltip,
+.theme-super-dark .progress-bar,
+.theme-super-dark .status-badge {
+  background: var(--theme-bg) !important;
+  color: var(--theme-text) !important;
+  border-color: var(--theme-border) !important;
+  border-radius: 0.8rem !important;
+}
+
+/* Core UI Components Dark Mode */
+.theme-dark .custom-grid,
+.theme-dark .data-table,
+.theme-dark .card,
+.theme-dark .panel,
+.theme-dark .nav-container,
+.theme-dark .form-input,
+.theme-dark .form-textarea,
+.theme-dark .form-select,
+.theme-dark .modal-content,
+.theme-dark .dropdown-menu,
+.theme-dark .tooltip,
+.theme-dark .progress-bar,
+.theme-dark .status-badge {
+  background: var(--theme-bg) !important;
+  color: var(--theme-text) !important;
+  border-color: var(--theme-border) !important;
+  border-radius: 0.8rem !important;
+}
+
+/* Core UI Components Light Mode */
+.theme-light .custom-grid,
+.theme-light .data-table,
+.theme-light .card,
+.theme-light .panel,
+.theme-light .nav-container,
+.theme-light .form-input,
+.theme-light .form-textarea,
+.theme-light .form-select,
+.theme-light .modal-content,
+.theme-light .dropdown-menu,
+.theme-light .tooltip,
+.theme-light .progress-bar,
+.theme-light .status-badge {
+  background: var(--theme-bg) !important;
+  color: var(--theme-text) !important;
+  border-color: var(--theme-border) !important;
+  border-radius: 0.8rem !important;
+}
+
+/* Hover States Super Dark Mode */
+.theme-super-dark .card:hover,
+.theme-super-dark .btn-secondary:hover,
+.theme-super-dark .btn-tertiary:hover,
+.theme-super-dark .btn-icon:hover,
+.theme-super-dark .dropdown-item:hover,
+.theme-super-dark .nav-dropdown-item:hover {
+  background: var(--theme-bg) !important;
+  border-color: var(--theme-border-hover) !important;
+}
+
+/* Hover States Dark Mode */
+.theme-dark .card:hover,
+.theme-dark .btn-secondary:hover,
+.theme-dark .btn-tertiary:hover,
+.theme-dark .btn-icon:hover,
+.theme-dark .dropdown-item:hover,
+.theme-dark .nav-dropdown-item:hover {
+  background: var(--card-bg-hover) !important;
+  border-color: var(--theme-border-hover) !important;
+}
+
+/* Hover States Light Mode */
+.theme-light .card:hover,
+.theme-light .btn-secondary:hover,
+.theme-light .btn-tertiary:hover,
+.theme-light .btn-icon:hover,
+.theme-light .dropdown-item:hover,
+.theme-light .nav-dropdown-item:hover {
+  background: var(--card-bg-hover) !important;
+  border-color: var(--theme-border-hover) !important;
+}
+
+/* Focus States Super Dark Mode */
+.theme-super-dark input:focus,
+.theme-super-dark textarea:focus,
+.theme-super-dark select:focus,
+.theme-super-dark button:focus {
+  border-color: var(--theme-border-focus) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--accent-background) !important;
+}
+
+/* Focus States Dark Mode */
+.theme-dark input:focus,
+.theme-dark textarea:focus,
+.theme-dark select:focus,
+.theme-dark button:focus {
+  border-color: var(--theme-border-focus) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--accent-background) !important;
+}
+
+.theme-light input:focus,
+.theme-light textarea:focus,
+.theme-light select:focus,
+.theme-light button:focus {
+  border-color: var(--theme-border-focus) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--accent-background) !important;
+}
+
+/* Special Super Dark Overrides Cooling Unit grid-custom*/
+  /*
 .theme-super-dark .custom-grid {
   background: #060511 !important;
-  border: 2px solid var(--card-border) !important;
+  border-radius: 0.8rem;
+  border: 1.1px solid #ffffff !important;
 }
-
-/* Super Dark Theme Specifi Class Rules - Use solid #060511 with simple borders on Cooling Unit View */
-.theme-super-dark .grid-rows-1 {
-  background: #060511 !important;
-}
-
-/* Super Dark Theme Specifi Class Rules - Use solid #060511 with simple borders on Cooling Unit View */
+  */
 .theme-super-dark .text-red-500 {
   background: #ff6666 !important;
   border-radius: 0.8rem;
 }
 
-/* Super Dark Theme Grid and Table Elements*/
-.theme-super-dark .data-table {
-  background: #060511 !important;
-  border: 1.5px solid var(--card-border) !important;
-}
-
 .theme-super-dark .data-table thead {
-  background: #060511 !important;
-  border: 1.5px solid  #ffffff !important;
+  border: 1.5px solid #ffffff !important;
 }
 
-/* Super Dark Theme Card Elements */
 .theme-super-dark .card {
-  background: #060511 !important;
-  border: 3px solid  #ffffff !important;
+  border: 3.5px solid #ffffff !important;
 }
 
 .theme-super-dark .card:hover {
-  background: #060511 !important;
-  border: 1px solid var(--card-border-hover) !important;
+  border: 0px solid var(--card-border-hover) !important;
 }
 
-.theme-super-dark .card-secondary {
-  background: #060511 !important;
-  border: 1px solid var(--card-border) !important;
-}
-
-.theme-super-dark .card-tertiary {
-  background: #060511 !important;
-  border: 1px solid var(--card-border-subtle) !important;
-}
-
-.theme-super-dark .card-compact {
-  background: #060511 !important;
-  border: 1px solid var(--card-border) !important;
-}
-
-/* Super Dark Theme Navigation Elements */
-.theme-super-dark .nav-container {
-  background: #060511 !important;
-  border-bottom: 1px solid var(--nav-border) !important;
-}
-
-.theme-super-dark .nav-dropdown {
-  background: #060511 !important;
-  border: 1px solid var(--nav-border) !important;
-}
-
-/* Super Dark Theme Button Elements */
-.theme-super-dark .btn-secondary {
-  background: #060511 !important;
-  border: 1px solid var(--card-border) !important;
-}
-
-.theme-super-dark .btn-tertiary:hover {
-  background: #060511 !important;
-}
-
-.theme-super-dark .btn-icon:hover {
-  background: #060511 !important;
-  border: 1px solid var(--accent-muted) !important;
-}
-
-/* Super Dark Theme Form Elements */
-.theme-super-dark .form-input {
-  background: #060511 !important;
-  border: 1px solid var(--input-border) !important;
-}
-
-.theme-super-dark .form-textarea {
-  background: #060511 !important;
-  border: 1px solid var(--input-border) !important;
-}
-
-.theme-super-dark .form-select {
-  background: #060511 !important;
-  border: 1px solid var(--input-border) !important;
-}
-
-.theme-super-dark .form-checkbox {
-  background: #060511 !important;
-  border: 2px solid var(--input-border) !important;
-}
-
-.theme-super-dark .form-radio {
-  background: #060511 !important;
-  border: 2px solid var(--input-border) !important;
-}
-
-/* Super Dark Theme Panel Elements */
-.theme-super-dark .panel {
-  background: #060511 !important;
-  border: 2px solid var(--panel-border) !important;
-}
-
-.theme-super-dark .panel-compact {
-  background: #060511 !important;
-  border: 2px solid var(--panel-border) !important;
-}
-
-.theme-super-dark .panel-header {
-  background: #060511 !important;
-  border-bottom: 2px solid var(--card-border) !important;
-}
-
-.theme-super-dark .panel-footer {
-  background: #060511 !important;
-  border-top: 2px solid var(--card-border) !important;
-}
-
-/* Super Dark Theme Status Indicators */
-.theme-super-dark .status-badge {
-  background: #060511 !important;
-  border: 1px solid var(--card-border) !important;
-}
-
-.theme-super-dark .badge-success {
-  background: #060511 !important;
-  border: 1px solid var(--status-success) !important;
-}
-
-.theme-super-dark .badge-error {
-  background: #060511 !important;
-  border: 1px solid var(--status-error) !important;
-}
-
-.theme-super-dark .badge-warning {
-  background: #060511 !important;
-  border: 1px solid var(--status-warning) !important;
-}
-
-.theme-super-dark .badge-info {
-  background: #060511 !important;
-  border: 1px solid var(--status-info) !important;
-}
-
-/* Super Dark Theme Interactive Elements */
-.theme-super-dark .dropdown-menu {
-  background: #060511 !important;
-  border: 1px solid var(--card-border) !important;
-}
-
-.theme-super-dark .dropdown-item:hover {
-  background: #060511 !important;
-}
-
-.theme-super-dark .nav-dropdown-item:hover {
-  background: #060511 !important;
-}
-
-.theme-super-dark .tooltip {
-  background: #060511 !important;
-  border: 1px solid var(--card-border) !important;
-}
-
-.theme-super-dark .progress-bar {
-  background: #060511 !important;
-  border: 1px solid var(--card-border-subtle) !important;
-}
-
-/* Super Dark Theme Collapse/Expand Elements */
-.theme-super-dark .collapse-toggle,
-.theme-super-dark [data-collapse-toggle],
-.theme-super-dark .collapse-button,
-.theme-super-dark .expand-button,
-.theme-super-dark button[aria-expanded],
-.theme-super-dark .flowbite-button,
-.theme-super-dark .fwb-button {
-  background: #060511 !important;
-  border: 1px solid var(--card-border) !important;
-  border-color: var(--card-border) !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.theme-super-dark .expand-all,
-.theme-super-dark .collapse-all,
-.theme-super-dark .collapse-controls button,
-.theme-super-dark .toggle-button {
-  background: #060511 !important;
-  border: 1px solid var(--card-border) !important;
-  border-color: var(--card-border) !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.theme-super-dark .expand-all:hover,
-.theme-super-dark .collapse-all:hover,
-.theme-super-dark .collapse-controls button:hover,
-.theme-super-dark .toggle-button:hover,
-.theme-super-dark [data-collapse-toggle]:hover,
-.theme-super-dark .collapse-button:hover,
-.theme-super-dark .expand-button:hover,
-.theme-super-dark button[aria-expanded]:hover,
-.theme-super-dark .flowbite-button:hover,
-.theme-super-dark .fwb-button:hover {
-  background: #060511 !important;
-  border: 1px solid var(--card-border-hover) !important;
-  border-color: var(--card-border-hover) !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.theme-super-dark .expand-all:focus,
-.theme-super-dark .collapse-all:focus,
-.theme-super-dark .collapse-controls button:focus,
-.theme-super-dark .toggle-button:focus,
-.theme-super-dark [data-collapse-toggle]:focus,
-.theme-super-dark .collapse-button:focus,
-.theme-super-dark .expand-button:focus,
-.theme-super-dark button[aria-expanded]:focus,
-.theme-super-dark .flowbite-button:focus,
-.theme-super-dark .fwb-button:focus {
-  background: #060511 !important;
-  border: 1px solid var(--card-border-focus) !important;
-  border-color: var(--card-border-focus) !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* Remove outlines from all button elements in super dark theme */
-.theme-super-dark button,
-.theme-super-dark button *,
-.theme-super-dark input[type="button"],
-.theme-super-dark input[type="submit"],
-.theme-super-dark input[type="reset"],
-.theme-super-dark .btn,
-.theme-super-dark .btn *,
-.theme-super-dark .button,
-.theme-super-dark .button *,
-.theme-super-dark [role="button"],
-.theme-super-dark [role="button"] * {
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.theme-super-dark button:focus,
-.theme-super-dark button *:focus,
-.theme-super-dark input[type="button"]:focus,
-.theme-super-dark input[type="submit"]:focus,
-.theme-super-dark input[type="reset"]:focus,
-.theme-super-dark .btn:focus,
-.theme-super-dark .btn *:focus,
-.theme-super-dark .button:focus,
-.theme-super-dark .button *:focus,
-.theme-super-dark [role="button"]:focus,
-.theme-super-dark [role="button"] *:focus {
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* Super Dark Theme - Target any button within flowbite components */
-.theme-super-dark [data-flowbite] button,
-.theme-super-dark .flowbite-component button {
-  background: #060511 !important;
-  border: 1px solid var(--card-border) !important;
-  border-color: var(--card-border) !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* Super Dark Theme Modal Elements */
-.theme-super-dark .modal-content {
-  background: #060511 !important;
-  border: 1px solid var(--panel-border) !important;
-  border-top-left-radius: 0.8rem !important;
-  border-top-right-radius: 0.8rem !important;
-}
-
+/* Modal Specific Overrides */
 .theme-super-dark .modal-header {
   background: #0c0826 !important;
   border-bottom: 1px solid var(--panel-border) !important;
-  border-top-left-radius: 0.8rem !important;
-  border-top-right-radius: 0.8rem !important;
 }
 
 .theme-super-dark .modal-body {
   background: #0c0826 !important;
-  border-bottom-left-radius: 0.8rem !important;
-  border-bottom-right-radius: 0.8rem !important;
 }
 
 .theme-super-dark .modal-footer {
-  background: #060511 !important;
   border-top: 1px solid var(--panel-border) !important;
-  border-bottom-left-radius: 0.8rem !important;
-  border-bottom-right-radius: 0.8rem !important;
 }
 
-/* Dark Theme Modal Elements */
+/* ==========================================================================
+   OPTIMIZED MODAL OVERRIDES
+   ========================================================================== */
+
+/* Modal Elements - All Themes */
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(5px) !important;
+}
+
 .theme-dark .modal-overlay {
   background: rgba(15, 23, 42, 0.8) !important;
 }
 
-.theme-dark .modal-content {
-  background: var(--card-bg) !important;
-  border: 1px solid var(--card-border) !important;
-  border-top-left-radius: 0.8rem !important;
-  border-top-right-radius: 0.8rem !important;
-}
-
-.theme-dark .modal-header {
-  background: var(--card-bg) !important;
-  border-bottom: 1px solid var(--card-border) !important;
-  border-top-left-radius: 0.8rem !important;
-  border-top-right-radius: 0.8rem !important;
-}
-
-.theme-dark .modal-body {
-  background: var(--card-bg) !important;
-  border-top-left-radius: 0.8rem !important;
-  border-top-right-radius: 0.8rem !important;
-  border-bottom-left-radius: 0.8rem !important;
-  border-bottom-right-radius: 0.8rem !important;
-}
-
-.theme-dark .modal-footer {
-  background: var(--card-bg) !important;
-  border-top: 1px solid var(--card-border) !important;
-  border-bottom-left-radius: 0.8rem !important;
-  border-bottom-right-radius: 0.8rem !important;
-}
-
-/* Light Theme Modal Elements */
 .theme-light .modal-overlay {
-  background: rgba(15, 23, 42, 0.4) !important;
+  background: rgb(214, 214, 214, 0.4) !important;
 }
 
-.theme-light .modal-content {
-  background: var(--card-bg) !important;
-  border: 1px solid var(--card-border) !important;
-  box-shadow: 0 8px 25px var(--shadow-color) !important;
-}
-
-.theme-light .modal-header {
-  background: var(--card-bg) !important;
-  border-bottom: 1px solid var(--card-border) !important;
-  border-top-left-radius: 0.8rem !important;
-  border-top-right-radius: 0.8rem !important;
-}
-
-.theme-light .modal-body {
-  background: var(--card-bg) !important;
-  border-top-left-radius: 0.8rem !important;
-  border-top-right-radius: 0.8rem !important;
-  border-bottom-left-radius: 0.8rem !important;
-  border-bottom-right-radius: 0.8rem !important;
-}
-
-.theme-light .modal-footer {
-  background: var(--card-bg) !important;
-  border-top: 1px solid var(--card-border) !important;
-}
-
-/* Super Dark Theme Glass Effects */
-.theme-super-dark .glass-effect {
-  background: #0c0826 !important;
-}
-
-.theme-super-dark .glass-effect-strong {
-  background: #0c0826 !important;
-}
-
-/* Super Dark Theme Tailwind Classes Override */
-.theme-super-dark .bg-slate-800 {
-  background: #060511 !important;
-}
-
-/* Dark Theme Tailwind Classes Override */
-.theme-dark .bg-slate-800 {
-  background: var(--card-bg) !important;
-}
-
-/* Dark Theme Collapse/Expand Elements */
-.theme-dark .collapse-toggle,
-.theme-dark [data-collapse-toggle],
-.theme-dark .collapse-button,
-.theme-dark .expand-button,
-.theme-dark button[aria-expanded],
-.theme-dark .flowbite-button,
-.theme-dark .fwb-button {
-  background: var(--card-bg) !important;
-  border: 1px solid var(--card-border) !important;
-  border-color: var(--card-border) !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.theme-dark .expand-all,
-.theme-dark .collapse-all,
-.theme-dark .collapse-controls button,
-.theme-dark .toggle-button {
-  background: var(--card-bg) !important;
-  border: 1px solid var(--card-border) !important;
-  border-color: var(--card-border) !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.theme-dark .expand-all:hover,
-.theme-dark .collapse-all:hover,
-.theme-dark .collapse-controls button:hover,
-.theme-dark .toggle-button:hover,
-.theme-dark [data-collapse-toggle]:hover,
-.theme-dark .collapse-button:hover,
-.theme-dark .expand-button:hover,
-.theme-dark button[aria-expanded]:hover,
-.theme-dark .flowbite-button:hover,
-.theme-dark .fwb-button:hover {
-  background: var(--card-bg-hover) !important;
-  border: 1px solid var(--card-border-hover) !important;
-  border-color: var(--card-border-hover) !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.theme-dark .expand-all:focus,
-.theme-dark .collapse-all:focus,
-.theme-dark .collapse-controls button:focus,
-.theme-dark .toggle-button:focus,
-.theme-dark [data-collapse-toggle]:focus,
-.theme-dark .collapse-button:focus,
-.theme-dark .expand-button:focus,
-.theme-dark button[aria-expanded]:focus,
-.theme-dark .flowbite-button:focus,
-.theme-dark .fwb-button:focus {
-  background: var(--card-bg) !important;
-  border: 1px solid var(--card-border) !important;
-  border-color: var(--card-border) !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.theme-dark [data-flowbite] button,
-.theme-dark .flowbite-component button {
-  background: var(--card-bg) !important;
-  border: 1px solid var(--card-border) !important;
-  border-color: var(--card-border) !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* Light Theme Tailwind Classes Override */
-.theme-light .bg-slate-800 {
-  background: rgba(128, 128, 128, 0.08) !important;
-}
-
-/* Glass Effect Override for Custom Grid */
-.custom-grid.glass-effect {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid var(--card-border) !important;
+/* Glass Effects */
+.glass-effect {
+  background: rgb(77, 76, 76, 0.05) !important;
+  border: 3px solid var(--card-border) !important;
   backdrop-filter: blur(15px) !important;
   box-shadow: 0 10px 25px var(--shadow-color) !important;
 }
 
-/* Light Theme Collapse/Expand Elements */
-.theme-light .collapse-toggle,
-.theme-light [data-collapse-toggle],
-.theme-light .collapse-button,
-.theme-light .expand-button,
-.theme-light button[aria-expanded],
-.theme-light .flowbite-button,
-.theme-light .fwb-button {
+.theme-super-dark .glass-effect,
+.theme-super-dark .glass-effect-strong {
+  background: #0c0826 !important;
+}
+
+/* Dark Theme Specific Rules */
+.theme-super-dark .nav-container {
+  background: var(--nav-bg);
+  /* Dark slate background for navigation container */
+  box-shadow: 0 2px 12px var(--shadow-color);
+}
+
+/* ==========================================================================
+   DEPRECATED TAILWIND CLASSES - COMMENTED OUT
+   ========================================================================== */
+
+/* 
+   The following classes are deprecated in newer versions of Tailwind CSS
+   Uncomment and update if needed for your Tailwind version
+*/
+
+/* DEPRECATED: .bg-slate-800 - Use custom properties instead */
+/*
+.theme-super-dark .bg-slate-800 {
+  background: #060511 !important;
+}
+
+.theme-dark .bg-slate-800 {
   background: var(--card-bg) !important;
-  border: 1px solid var(--card-border) !important;
-  border-color: var(--card-border) !important;
-  outline: none !important;
-  box-shadow: none !important;
 }
 
-.theme-light .expand-all,
-.theme-light .collapse-all,
-.theme-light .collapse-controls button,
-.theme-light .toggle-button {
-  background: var(--card-bg) !important;
-  border: 1px solid var(--card-border) !important;
-  border-color: var(--card-border) !important;
-  outline: none !important;
-  box-shadow: none !important;
+.theme-light .bg-slate-800 {
+  background: rgba(128, 128, 128, 0.08) !important;
+}
+*/
+
+/* DEPRECATED: Specific rounded classes - Use border-radius instead */
+/*
+.rounded-3xl {
+  border-radius: 1.5rem !important;
+}
+*/
+
+.transform-gpu {
+  transform: translateZ(0) !important;
 }
 
-.theme-light .expand-all:hover,
-.theme-light .collapse-all:hover,
-.theme-light .collapse-controls button:hover,
-.theme-light .toggle-button:hover,
-.theme-light [data-collapse-toggle]:hover,
-.theme-light .collapse-button:hover,
-.theme-light .expand-button:hover,
-.theme-light button[aria-expanded]:hover,
-.theme-light .flowbite-button:hover,
-.theme-light .fwb-button:hover {
-  background: var(--card-bg-hover) !important;
-  border: 1px solid var(--card-border-hover) !important;
-  border-color: var(--card-border-hover) !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.theme-light .expand-all:focus,
-.theme-light .collapse-all:focus,
-.theme-light .collapse-controls button:focus,
-.theme-light .toggle-button:focus,
-.theme-light [data-collapse-toggle]:focus,
-.theme-light .collapse-button:focus,
-.theme-light .expand-button:focus,
-.theme-light button[aria-expanded]:focus,
-.theme-light .flowbite-button:focus,
-.theme-light .fwb-button:focus {
-  background: var(--card-bg) !important;
-  border: 1px solid var(--card-border) !important;
-  border-color: var(--card-border) !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.theme-light [data-flowbite] button,
-.theme-light .flowbite-component button {
-  background: var(--card-bg) !important;
-  border: 1px solid var(--card-border) !important;
-  border-color: var(--card-border) !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* Super Dark Theme Section Elements */
+/* Section Container Override */
 .theme-super-dark .section-container {
   background: #ffffff !important;
 }
@@ -2924,7 +2647,7 @@ body {
 .panel-header {
   @apply p-6 border-b;
   background: #060511 !important;
-  border-bottom: 2px solid var(--card-border);
+  border-bottom: 0px solid var(--card-border);
   border-radius: 0.8rem 0.8rem 0 0;
 }
 
@@ -3001,10 +2724,113 @@ body {
 }
 
 /* ==========================================================================
-   FLOWBITE COMPONENT OVERRIDES
+   OPTIMIZED FLOWBITE COMPONENT OVERRIDES
    ========================================================================== */
 
-/* Flowbite Navbar Overrides */
+/* Universal Flowbite Component Styling */
+[data-flowbite],
+.flowbite-component,
+.fwb-accordion,
+.fwb-alert,
+.fwb-avatar,
+.fwb-badge,
+.fwb-breadcrumb,
+.fwb-button,
+.fwb-button-group,
+.fwb-card,
+.fwb-carousel,
+.fwb-dropdown,
+.fwb-footer,
+.fwb-list-group,
+.fwb-modal,
+.fwb-navbar,
+.fwb-pagination,
+.fwb-popover,
+.fwb-progress,
+.fwb-rating,
+.fwb-sidebar,
+.fwb-spinner,
+.fwb-tab,
+.fwb-table,
+.fwb-toast,
+.fwb-tooltip {
+  background: var(--theme-bg) !important;
+  color: var(--theme-text) !important;
+  border-color: var(--theme-border) !important;
+  border-radius: 0.8rem !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Flowbite Button Specific Overrides */
+.theme-super-dark .fwb-button,
+.theme-super-dark [data-flowbite] button,
+.theme-super-dark .flowbite-component button,
+.theme-super-dark .collapse-toggle,
+.theme-super-dark [data-collapse-toggle],
+.theme-super-dark .collapse-button,
+.theme-super-dark .expand-button,
+.theme-super-dark button[aria-expanded] {
+  background: var(--theme-bg) !important;
+  border: 1px solid var(--theme-border) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.theme-dark .fwb-button,
+.theme-dark [data-flowbite] button,
+.theme-dark .flowbite-component button,
+.theme-dark .collapse-toggle,
+.theme-dark [data-collapse-toggle],
+.theme-dark .collapse-button,
+.theme-dark .expand-button,
+.theme-dark button[aria-expanded] {
+  background: var(--theme-bg) !important;
+  border: 1px solid var(--theme-border) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.theme-light .fwb-button,
+.theme-light [data-flowbite] button,
+.theme-light .flowbite-component button,
+.theme-light .collapse-toggle,
+.theme-light [data-collapse-toggle],
+.theme-light .collapse-button,
+.theme-light .expand-button,
+.theme-light button[aria-expanded] {
+  background: var(--theme-bg) !important;
+  border: 1px solid var(--theme-border) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Flowbite Hover States */
+.fwb-button:hover,
+[data-flowbite] button:hover,
+.flowbite-component button:hover,
+.collapse-toggle:hover,
+[data-collapse-toggle]:hover,
+.collapse-button:hover,
+.expand-button:hover,
+button[aria-expanded]:hover {
+  border-color: var(--theme-border-hover) !important;
+}
+
+/* Flowbite Focus States */
+.fwb-button:focus,
+[data-flowbite] button:focus,
+.flowbite-component button:focus,
+.collapse-toggle:focus,
+[data-collapse-toggle]:focus,
+.collapse-button:focus,
+.expand-button:focus,
+button[aria-expanded]:focus {
+  border-color: var(--theme-border-focus) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Flowbite Navigation Overrides */
 .fwb-navbar {
   background: var(--nav-bg) !important;
   border-bottom: 1px solid var(--nav-border) !important;
@@ -3018,26 +2844,22 @@ body {
 
 .fwb-navbar-link {
   color: var(--text-secondary) !important;
-  transition: all 0.2s ease !important;
 }
 
 .fwb-navbar-link:hover {
   color: var(--nav-text-hover) !important;
 }
 
-/* Flowbite Button Overrides */
-.fwb-button {
-  transition: all 0.2s ease !important;
-}
-
 /* Flowbite Modal Overrides */
 .fwb-modal {
-  background: var(--modal-overlay) !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(5px) !important;
 }
 
 .fwb-modal-content {
-  background: var(--card-bg) !important;
-  border: 1px solid var(--card-border) !important;
+  background: var(--theme-bg) !important;
+  border: 1px solid var(--theme-border) !important;
+  border-radius: 0.8rem !important;
 }
 
 /* ==========================================================================
@@ -5864,6 +5686,65 @@ body {
   /* Dark text for all generic component classes in light theme */
   border-color: var(--card-border) !important;
   /* Border for all generic component classes in light theme */
+}
+
+/* ==========================================================================
+   CUSTOM SPACING COMPONENT STYLING - ALL THEMES
+   ========================================================================== */
+
+/* My-6 Mx-2 Component Styling - Matches home page card styling */
+.my-6.mx-2 {
+  @apply border shadow-lg transition-all duration-300;
+  background: var(--card-bg) !important;
+  border: 1.8px solid var(--card-border) !important;
+  border-radius: 0.8rem !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 2px 5px var(--shadow-color) !important;
+  color: var(--text-primary) !important;
+  padding: 1.5rem !important;
+}
+
+.my-6.mx-2:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 0px 0px var(--shadow-color) !important;
+  border: 1.8px solid var(--card-border-hover) !important;
+  background: var(--card-bg-hover) !important;
+}
+
+/* Super Dark Theme Specific Styling */
+.theme-super-dark .my-6.mx-2 {
+  background: #060511 !important;
+  border: 1.8px solid var(--card-border) !important;
+  color: var(--text-primary) !important;
+}
+
+.theme-super-dark .my-6.mx-2:hover {
+  background: #060511 !important;
+  border: 1.8px solid var(--card-border-hover) !important;
+}
+
+/* Dark Theme Specific Styling */
+.theme-dark .my-6.mx-2 {
+  background: var(--card-bg) !important;
+  border: 1.8px solid var(--card-border) !important;
+  color: var(--text-primary) !important;
+}
+
+.theme-dark .my-6.mx-2:hover {
+  background: var(--card-bg-hover) !important;
+  border: 1.8px solid var(--card-border-hover) !important;
+}
+
+/* Light Theme Specific Styling */
+.theme-light .my-6.mx-2 {
+  background: var(--card-bg) !important;
+  border: 1.8px solid var(--card-border) !important;
+  color: var(--text-primary) !important;
+}
+
+.theme-light .my-6.mx-2:hover {
+  background: var(--card-bg-hover) !important;
+  border: 1.8px solid var(--card-border-hover) !important;
 }
 
 /* ==========================================================================
