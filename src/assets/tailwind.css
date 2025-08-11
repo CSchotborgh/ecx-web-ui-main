@@ -375,7 +375,7 @@ body {
 /* Card Hover State - Interactive feedback */
 .card:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 8px var(--shadow-color);
+  box-shadow: 0 0px 0px var(--shadow-color);
   border: 1.8px solid var(--card-border-hover);
   /* Hover border - uses --card-border-hover variable for more visible gray border on card interaction */
   background: var(--card-bg-hover);
@@ -568,6 +568,8 @@ body {
 /* Large Button Variant */
 .btn-lg {
   @apply px-8 py-4 text-lg;
+  background: #060511 !important;
+  border: 1px solid #ffffff;
 }
 
 /* Icon-only Buttons */
@@ -786,31 +788,38 @@ body {
    THEME-SPECIFIC OVERRIDES
    ========================================================================== */
 
-/* Super Dark Theme Specific Rules - Use solid #060511 with simple borders */
+/* Super Dark Theme Specific Class Rules - Use solid #060511 with simple borders on Home View */
 .theme-super-dark .custom-grid {
   background: #060511 !important;
-  border: 1px solid var(--card-border) !important;
+  border: 2px solid var(--card-border) !important;
 }
 
+/* Super Dark Theme Specifi Class Rules - Use solid #060511 with simple borders on Cooling Unit View */
 .theme-super-dark .grid-rows-1 {
   background: #060511 !important;
-  border: 1px solid var(--card-border) !important;
 }
 
-/* Super Dark Theme Grid and Table Elements */
+/* Super Dark Theme Specifi Class Rules - Use solid #060511 with simple borders on Cooling Unit View */
+.theme-super-dark .text-red-500 {
+  background: #ff6666 !important;
+  border-radius: 0.8rem;
+}
+
+/* Super Dark Theme Grid and Table Elements*/
 .theme-super-dark .data-table {
   background: #060511 !important;
-  border: 1px solid var(--card-border) !important;
+  border: 1.5px solid var(--card-border) !important;
 }
 
 .theme-super-dark .data-table thead {
   background: #060511 !important;
+  border: 1.5px solid  #ffffff !important;
 }
 
 /* Super Dark Theme Card Elements */
 .theme-super-dark .card {
   background: #060511 !important;
-  border: 1px solid var(--card-border) !important;
+  border: 3px solid  #ffffff !important;
 }
 
 .theme-super-dark .card:hover {
@@ -1066,14 +1075,14 @@ body {
 }
 
 .theme-super-dark .modal-header {
-  background: #060511 !important;
+  background: #0c0826 !important;
   border-bottom: 1px solid var(--panel-border) !important;
   border-top-left-radius: 0.8rem !important;
   border-top-right-radius: 0.8rem !important;
 }
 
 .theme-super-dark .modal-body {
-  background: #060511 !important;
+  background: #0c0826 !important;
   border-bottom-left-radius: 0.8rem !important;
   border-bottom-right-radius: 0.8rem !important;
 }
@@ -1152,11 +1161,11 @@ body {
 
 /* Super Dark Theme Glass Effects */
 .theme-super-dark .glass-effect {
-  background: #060511 !important;
+  background: #0c0826 !important;
 }
 
 .theme-super-dark .glass-effect-strong {
-  background: #060511 !important;
+  background: #0c0826 !important;
 }
 
 /* Super Dark Theme Tailwind Classes Override */
@@ -1532,7 +1541,7 @@ body {
    ========================================================================== */
 
 /* Super Dark Theme Navigation Link Styling */
-.theme-super-dark #app > nav > div > div.flex.items-center.justify-between.h-16 > div.hidden.md\:flex.items-center.space-x-1 > a.router-link-active.router-link-exact-active.nav-link,
+.theme-super-dark #app>nav>div>div.flex.items-center.justify-between.h-16>div.hidden.md\:flex.items-center.space-x-1>a.router-link-active.router-link-exact-active.nav-link,
 .theme-super-dark .nav-link.router-link-active,
 .theme-super-dark .nav-link.router-link-exact-active {
   border: 1px solid transparent !important;
@@ -1547,7 +1556,7 @@ body {
   /* Subtle glow for active navigation links in super dark theme */
 }
 
-.theme-super-dark #app > nav > div > div.flex.items-center.justify-between.h-16 > div.hidden.md\:flex.items-center.space-x-1 > a.router-link-active.router-link-exact-active.nav-link:hover,
+.theme-super-dark #app>nav>div>div.flex.items-center.justify-between.h-16>div.hidden.md\:flex.items-center.space-x-1>a.router-link-active.router-link-exact-active.nav-link:hover,
 .theme-super-dark .nav-link.router-link-active:hover,
 .theme-super-dark .nav-link.router-link-exact-active:hover {
   border: 1px solid transparent !important;
@@ -1561,7 +1570,7 @@ body {
 }
 
 /* Dark Theme Navigation Link Styling */
-.theme-dark #app > nav > div > div.flex.items-center.justify-between.h-16 > div.hidden.md\:flex.items-center.space-x-1 > a.router-link-active.router-link-exact-active.nav-link,
+.theme-dark #app>nav>div>div.flex.items-center.justify-between.h-16>div.hidden.md\:flex.items-center.space-x-1>a.router-link-active.router-link-exact-active.nav-link,
 .theme-dark .nav-link.router-link-active,
 .theme-dark .nav-link.router-link-exact-active {
   border: 1px solid transparent !important;
@@ -1576,7 +1585,7 @@ body {
   /* Subtle glow for active navigation links in dark theme */
 }
 
-.theme-dark #app > nav > div > div.flex.items-center.justify-between.h-16 > div.hidden.md\:flex.items-center.space-x-1 > a.router-link-active.router-link-exact-active.nav-link:hover,
+.theme-dark #app>nav>div>div.flex.items-center.justify-between.h-16>div.hidden.md\:flex.items-center.space-x-1>a.router-link-active.router-link-exact-active.nav-link:hover,
 .theme-dark .nav-link.router-link-active:hover,
 .theme-dark .nav-link.router-link-exact-active:hover {
   border: 1px solid transparent !important;
@@ -1590,7 +1599,7 @@ body {
 }
 
 /* Light Theme Navigation Link Styling */
-.theme-light #app > nav > div > div.flex.items-center.justify-between.h-16 > div.hidden.md\:flex.items-center.space-x-1 > a.router-link-active.router-link-exact-active.nav-link,
+.theme-light #app>nav>div>div.flex.items-center.justify-between.h-16>div.hidden.md\:flex.items-center.space-x-1>a.router-link-active.router-link-exact-active.nav-link,
 .theme-light .nav-link.router-link-active,
 .theme-light .nav-link.router-link-exact-active {
   border: 1px solid transparent !important;
@@ -1605,7 +1614,7 @@ body {
   /* Subtle glow for active navigation links in light theme */
 }
 
-.theme-light #app > nav > div > div.flex.items-center.justify-between.h-16 > div.hidden.md\:flex.items-center.space-x-1 > a.router-link-active.router-link-exact-active.nav-link:hover,
+.theme-light #app>nav>div>div.flex.items-center.justify-between.h-16>div.hidden.md\:flex.items-center.space-x-1>a.router-link-active.router-link-exact-active.nav-link:hover,
 .theme-light .nav-link.router-link-active:hover,
 .theme-light .nav-link.router-link-exact-active:hover {
   border: 1px solid transparent !important;
