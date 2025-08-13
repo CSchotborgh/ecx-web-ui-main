@@ -50,6 +50,16 @@ export default {
           950: '#060511',
         },
         slate: {
+          50: '#f8f7ff',
+          100: '#f0eeff', 
+          200: '#e1ddff',
+          300: '#cfc8ff',
+          400: '#b8aeff',
+          500: '#9d8fff',
+          600: '#7c3aed',
+          700: '#6b21a8',
+          800: '#060511',
+          900: '#060511',
           950: '#060511',
         }
       },
@@ -62,6 +72,16 @@ export default {
       },
       backdropBlur: {
         xs: '2px',
+      },
+      borderRadius: {
+        'sm': '0.75rem',
+        DEFAULT: '0.75rem',
+        'md': '0.75rem',
+        'lg': '0.75rem',
+        'xl': '0.75rem',
+        '2xl': '0.75rem',
+        '3xl': '0.75rem',
+        'full': '9999px',
       },
       animation: {
         'fade-in': 'fadeIn 0.3s ease-in-out',
@@ -95,5 +115,6 @@ export default {
     require('flowbite/plugin'),
     require('@tailwindcss/aspect-ratio')
   ],
+  
 }
 
