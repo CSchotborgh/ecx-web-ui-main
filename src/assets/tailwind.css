@@ -16,7 +16,7 @@
 /* Default/Super Dark Theme Variables - EdgeRack Inspired */
 :root {
   /* Background Gradients - Main page backgrounds with deep navy/black theme */
-  --bg-gradient: linear-gradient(45deg, #0c0826 100%, #060511 25%, #060511 50%, #141028 100%);
+  --bg-gradient: linear-gradient(45deg, #0c0826 100%, #060511 25%, #060511 50%, #141028 25%);
   /* Deep navy gradient with black accents */
   --bg-secondary: linear-gradient(135deg, #060511 0%, #0b0822 50%, #0b0823 100%);
   /* Secondary navy gradient with black accents */
@@ -792,10 +792,9 @@ body {
 .theme-super-dark {
   --theme-bg: #060511;
   --theme-text: #ffffff;
-  --theme-border:  rgb(6, 5, 17, 0.6);
-  --theme-border-hover: rgb(6, 5, 17, 0.6);
-  --theme-border-static: rgb(255, 255, 255, 0.6);
-  --theme-border-focus: rgb(12, 8, 38, 0.8);
+  --theme-border: rgba(75, 85, 99, 0.4);
+  --theme-border-hover: rgba(156, 163, 175, 0.6);
+  --theme-border-focus: rgba(96, 165, 250, 0.8);
 }
 
 .theme-dark {
@@ -818,7 +817,7 @@ body {
    CONSOLIDATED COMPONENT OVERRIDES - ALL THEMES
    ========================================================================== */
 
-/* Core UI Components Super Dark Mode */
+/* Core UI Components */
 .theme-super-dark .custom-grid,
 .theme-super-dark .grid-rows-1,
 .theme-super-dark .data-table,
@@ -836,11 +835,9 @@ body {
   background: var(--theme-bg) !important;
   color: var(--theme-text) !important;
   border-color: var(--theme-border) !important;
-  border-color: var(--theme-border-static) !important;
   border-radius: 0.8rem !important;
 }
 
-/* Core UI Components Dark Mode */
 .theme-dark .custom-grid,
 .theme-dark .data-table,
 .theme-dark .card,
@@ -854,13 +851,12 @@ body {
 .theme-dark .tooltip,
 .theme-dark .progress-bar,
 .theme-dark .status-badge {
-  background: var(--theme-) !important;
+  background: var(--theme-bg) !important;
   color: var(--theme-text) !important;
   border-color: var(--theme-border) !important;
   border-radius: 0.8rem !important;
 }
 
-/* Core UI Components Light Mode */
 .theme-light .custom-grid,
 .theme-light .data-table,
 .theme-light .card,
@@ -880,7 +876,7 @@ body {
   border-radius: 0.8rem !important;
 }
 
-/* Hover States Super Dark Mode */
+/* Hover States */
 .theme-super-dark .card:hover,
 .theme-super-dark .btn-secondary:hover,
 .theme-super-dark .btn-tertiary:hover,
@@ -888,21 +884,19 @@ body {
 .theme-super-dark .dropdown-item:hover,
 .theme-super-dark .nav-dropdown-item:hover {
   background: var(--theme-bg) !important;
-  border-color: var(--theme-border) !important;
+  border-color: var(--theme-border-hover) !important;
 }
 
-/* Hover States Dark Mode */
 .theme-dark .card:hover,
 .theme-dark .btn-secondary:hover,
 .theme-dark .btn-tertiary:hover,
 .theme-dark .btn-icon:hover,
 .theme-dark .dropdown-item:hover,
 .theme-dark .nav-dropdown-item:hover {
-  background: var(--card-bg) !important;
-  border-color: var(--theme-border) !important;
+  background: var(--card-bg-hover) !important;
+  border-color: var(--theme-border-hover) !important;
 }
 
-/* Hover States Light Mode */
 .theme-light .card:hover,
 .theme-light .btn-secondary:hover,
 .theme-light .btn-tertiary:hover,
@@ -941,11 +935,9 @@ body {
   box-shadow: 0 0 0 2px var(--accent-background) !important;
 }
 
-/* Special Super Dark Overrides Cooling Unit grid-custom*/
+/* Special Super Dark Overrides */
 .theme-super-dark .custom-grid {
-  background: #060511 !important;
-  border-radius: 0.8rem;
-  border: 1.1px solid #ffffff !important;
+  border: 2px solid var(--card-border) !important;
 }
 
 .theme-super-dark .text-red-500 {
@@ -958,21 +950,21 @@ body {
 }
 
 .theme-super-dark .card {
-  border: 3.5px solid #ffffff !important;
+  border: 3px solid #ffffff !important;
 }
 
 .theme-super-dark .card:hover {
-  border: 0px solid var(--card-border-hover) !important;
+  border: 1px solid var(--card-border-hover) !important;
 }
 
 /* Modal Specific Overrides */
 .theme-super-dark .modal-header {
-  background: #060511 !important;
+  background: #0c0826 !important;
   border-bottom: 1px solid var(--panel-border) !important;
 }
 
 .theme-super-dark .modal-body {
-  background: #060511 !important;
+  background: #0c0826 !important;
 }
 
 .theme-super-dark .modal-footer {
@@ -994,13 +986,13 @@ body {
 }
 
 .theme-light .modal-overlay {
-  background: rgb(214, 214, 214, 0.4) !important;
+  background: rgba(15, 23, 42, 0.4) !important;
 }
 
 /* Glass Effects */
 .glass-effect {
-  background: rgb(77, 76, 76, 0.05) !important;
-  border: 3px solid var(--card-border) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid var(--card-border) !important;
   backdrop-filter: blur(15px) !important;
   box-shadow: 0 10px 25px var(--shadow-color) !important;
 }
@@ -1008,13 +1000,6 @@ body {
 .theme-super-dark .glass-effect,
 .theme-super-dark .glass-effect-strong {
   background: #0c0826 !important;
-}
-
-/* Dark Theme Specific Rules */
-.theme-super-dark .nav-container {
-  background: var(--nav-bg);
-  /* Dark slate background for navigation container */
-  box-shadow: 0 2px 12px var(--shadow-color);
 }
 
 /* ==========================================================================
@@ -1048,9 +1033,12 @@ body {
 }
 */
 
+/* DEPRECATED: Complex transform utilities - Use custom CSS */
+/*
 .transform-gpu {
   transform: translateZ(0) !important;
 }
+*/
 
 /* Section Container Override */
 .theme-super-dark .section-container {
@@ -2647,7 +2635,7 @@ body {
 .panel-header {
   @apply p-6 border-b;
   background: #060511 !important;
-  border-bottom: 0px solid var(--card-border);
+  border-bottom: 2px solid var(--card-border);
   border-radius: 0.8rem 0.8rem 0 0;
 }
 
